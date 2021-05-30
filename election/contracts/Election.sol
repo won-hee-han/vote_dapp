@@ -15,6 +15,12 @@ mapping(uint => Candidate) public candidates;
 //Store accounts that have voted
 mapping(address => bool) public voters;
 
+// event Voted 투표후 페이지를 리프레시
+
+event votedEvent (
+    uint indexed _candidateId
+);
+
 // Store Candidates Count 
 uint public candidatesCount;
 
@@ -31,20 +37,25 @@ uint public candidatesCount;
 
      // Candidate(id = candidatesCount, name = _name, 0);
  }
-   
 
+// 투표자의 중복투표 확인용 함수.
  function vote (uint _candidateId) public {
      //require that they haven't voted before
-     require(!voters[msg.sender], "이미 투표하셨습니다.");
+     require(!voters[msg.sender],"This Voter has already voted.");
 
      //require a valid candidate
      require(_candidateId > 0 && _candidateId <= candidatesCount, "There is no such candidate");
 
      // record that voter has voted
      voters[msg.sender] = true;
+
      //update candidate vote Count
      candidates[_candidateId].voteCount++; 
      // mapping 변수에서 candidate struct를 읽어와 후보자의 투표수를 증가시키는것.
+
+     //trigger voted event
+
+     emit votedEvent(_candidateId);
  }
 
 }
