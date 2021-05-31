@@ -32,18 +32,28 @@
               // Connect provider to interact with contract
               App.contracts.Election.setProvider(App.web3Provider);
 
-              App.listenForEvents();
+          //    App.listenForEvents();
 
-              return App.render();
+              return App.startpage();
           });
+      },
+
+      startpage : function() {         
+          var vote__btn = $(".vote__btn");
+          var vote = $("#vote");
+          vote.show();          
+    
+    //      return App.render();
       },
 
       render: function() {
           var electionInstance;
+          var container= $(".container");
           var loader = $("#loader");
           var content = $("#content");
           // index.html의 loader와 content와 연결
-
+         
+          container.show();
           loader.show();
           content.hide();
           // rendering되기 전까지 loader화면은 보이고, content화면은 숨김
@@ -56,6 +66,7 @@
                   // error가 없을 경우, html에 account주소를 표기
                   // 이더 계정을 연동
               }
+              
           });
 
 
@@ -78,7 +89,7 @@
                       var id = candidate[0];
                       var name = candidate[1];
                       var voteCount = candidate[2];
-
+                      var totalVote = candidate[3];
 
                       // 후보자 수 만큼 electionInstance에 후보자 데이터를 저장
                       // Render candidate Result
@@ -89,6 +100,10 @@
                       // Render Candidate ballot option
                       var candidateOption = "<option value='" + id + "' >" + name + "</option>"
                       candidatesSelect.append(candidateOption);
+
+                      //Render candidate Result total
+                      var total = totalVote;
+                      candidatesResults__total.append(total);
                   });
               }
               return electionInstance.voters(App.account);
@@ -96,6 +111,7 @@
               //Do not allow a user to Vote
               if (hasVoted) {
                   $('form').hide();
+                  
                   // 투표를 한 경우 폼을 삭제합니다.
               }
               loader.hide();
@@ -105,6 +121,7 @@
           });
       },
 
+/*
       // Listen for events emitted from the contract
       listenForEvents: function() {
           App.contracts.Election.deployed().then(function(instance) {
@@ -121,6 +138,8 @@
               })
           })
       },
+
+      */
 
       castVote: function() {
           var candidateId = $('#candidatesSelect').val();

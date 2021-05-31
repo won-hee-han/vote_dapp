@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap');
-@import "css/reset.css";
-@import "css/variable.css";
+@import "reset.css";
+@import "variable.css";
+
 body {
-    background-color: ghostwhite;
+    background-color: white;
     height: 1000vh;
     display: flex;
     flex-direction: column;
@@ -10,10 +11,11 @@ body {
 }
 
 .screen__header {
-    background-color: rgba(239, 169, 225, 0.8);
+    background-color: skyblue;
+    color:white;
     display: flex;
     flex-direction: row;
-    padding: 20px;
+    padding: 40px;
     justify-content: space-between;
     position: fixed;
     width: 100%;
@@ -24,6 +26,7 @@ body {
 
 .screen__icon {
     margin-left: 10px;
+    font-size:30px;
 }
 
 .screen__icon_i {
@@ -84,6 +87,14 @@ main {
     justify-content: center;
 }
 
+.section_three {
+    display: flex;
+    flex-direction: row;
+    padding: 50px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    justify-content: center;
+}
+
 .introduction__header {
     font-size: 35px;
 }
@@ -107,7 +118,7 @@ main {
 
 .screen__image {
     border-radius: 50px;
-    animation: flight 2s ease-in-out forwards;
+    animation: flight 2s ease-in-out infinite;
 }
 
 .vote__btn {
@@ -131,4 +142,23 @@ main {
         opacity: 1;
         transform: translateX(0px);
     }
+}
+
+#candidatesResults__total {
+    display: flex;
+    justify-content:flex-end;
+    margin-bottom:25px;
+}
+
+.text-center:first-child {
+    margin-top:50px;
+    font-size:30px;
+    font-weight:600px;
+}
+
+.container {
+    border:3px solid rgba(0,0,0,0.5);
+    border-radius:30px;
+    padding: 50px;
+    margin-top:50px;
 }

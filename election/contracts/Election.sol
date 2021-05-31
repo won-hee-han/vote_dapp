@@ -7,10 +7,12 @@ contract Election {
         uint id;
         string name;
         uint voteCount;
+        uint totalVote;
     }
 
 // R/W Candidates
 mapping(uint => Candidate) public candidates;
+
 // key <-> value candidates array에 구조체의 값을 매핑.
 //Store accounts that have voted
 mapping(address => bool) public voters;
@@ -24,6 +26,7 @@ event votedEvent (
 // Store Candidates Count 
 uint public candidatesCount;
 
+
  constructor() public {
         addCandidate("Candidate 1");
         addCandidate("Candidate 2");
@@ -33,7 +36,7 @@ uint public candidatesCount;
 
  function addCandidate (string memory _name) private {
      candidatesCount ++;
-     candidates[candidatesCount] = Candidate(candidatesCount, _name, 0);
+     candidates[candidatesCount] = Candidate(candidatesCount, _name, 0, 0);
 
      // Candidate(id = candidatesCount, name = _name, 0);
  }
@@ -50,7 +53,12 @@ uint public candidatesCount;
      voters[msg.sender] = true;
 
      //update candidate vote Count
-     candidates[_candidateId].voteCount++; 
+     candidates[_candidateId].voteCount++;
+     candidates[2].totalVote++;
+     
+     
+
+    
      // mapping 변수에서 candidate struct를 읽어와 후보자의 투표수를 증가시키는것.
 
      //trigger voted event
