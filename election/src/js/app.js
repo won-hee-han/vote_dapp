@@ -32,27 +32,27 @@
               // Connect provider to interact with contract
               App.contracts.Election.setProvider(App.web3Provider);
 
-          //    App.listenForEvents();
+              //    App.listenForEvents();
 
               return App.startpage();
           });
       },
 
-      startpage : function() {         
+      startpage: function() {
           var vote__btn = $(".vote__btn");
           var vote = $("#vote");
-          vote.show();          
-    
-    //      return App.render();
+          vote.show();
+
+          //      return App.render();
       },
 
       render: function() {
           var electionInstance;
-          var container= $(".container");
+          var container = $(".container");
           var loader = $("#loader");
           var content = $("#content");
           // index.html의 loader와 content와 연결
-         
+
           container.show();
           loader.show();
           content.hide();
@@ -66,7 +66,7 @@
                   // error가 없을 경우, html에 account주소를 표기
                   // 이더 계정을 연동
               }
-              
+
           });
 
 
@@ -93,7 +93,7 @@
 
                       // 후보자 수 만큼 electionInstance에 후보자 데이터를 저장
                       // Render candidate Result
-                      var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + "</td><td>" + voteCount + "</td></tr>"
+                      var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + "</td><td>" // + voteCount + "</td></tr>"
                       candidatesResults.append(candidateTemplate);
                       // 후보자 템플릿에 id, name, votecount를 추가
 
@@ -102,8 +102,9 @@
                       candidatesSelect.append(candidateOption);
 
                       //Render candidate Result total
-                      var total = totalVote;
-                      candidatesResults__total.append(total);
+                      var totalOption = totalVote;
+
+                      candidatesResults__total.append(totalOption);
                   });
               }
               return electionInstance.voters(App.account);
@@ -111,7 +112,7 @@
               //Do not allow a user to Vote
               if (hasVoted) {
                   $('form').hide();
-                  
+
                   // 투표를 한 경우 폼을 삭제합니다.
               }
               loader.hide();
@@ -121,25 +122,25 @@
           });
       },
 
-/*
-      // Listen for events emitted from the contract
-      listenForEvents: function() {
-          App.contracts.Election.deployed().then(function(instance) {
-              // Restart Chrome if you are unable to receive this event
-              // This is a known issue with Metamask
+      /*
+            // Listen for events emitted from the contract
+            listenForEvents: function() {
+                App.contracts.Election.deployed().then(function(instance) {
+                    // Restart Chrome if you are unable to receive this event
+                    // This is a known issue with Metamask
 
-              instance.votedEvent({}, {
-                  fromBlock: 0,
-                  toBlock: 'latest'
-              }).watch(function(error, event) {
-                  console.log("event triggered", event);
-                  // Reload when a new vote is recorded
-                  App.render();
-              })
-          })
-      },
+                    instance.votedEvent({}, {
+                        fromBlock: 0,
+                        toBlock: 'latest'
+                    }).watch(function(error, event) {
+                        console.log("event triggered", event);
+                        // Reload when a new vote is recorded
+                        App.render();
+                    })
+                })
+            },
 
-      */
+            */
 
       castVote: function() {
           var candidateId = $('#candidatesSelect').val();

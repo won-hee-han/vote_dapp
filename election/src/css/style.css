@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap');
 @import "reset.css";
 @import "variable.css";
-
 body {
     background-color: white;
     height: 1000vh;
@@ -12,7 +11,7 @@ body {
 
 .screen__header {
     background-color: skyblue;
-    color:white;
+    color: white;
     display: flex;
     flex-direction: row;
     padding: 40px;
@@ -26,7 +25,7 @@ body {
 
 .screen__icon {
     margin-left: 10px;
-    font-size:30px;
+    font-size: 30px;
 }
 
 .screen__icon_i {
@@ -146,19 +145,19 @@ main {
 
 #candidatesResults__total {
     display: flex;
-    justify-content:flex-end;
-    margin-bottom:25px;
+    justify-content: flex-end;
+    margin-bottom: 25px;
 }
 
 .text-center:first-child {
-    margin-top:50px;
-    font-size:30px;
-    font-weight:600px;
+    margin-top: 50px;
+    font-size: 30px;
+    font-weight: 600px;
 }
 
 .container {
-    border:3px solid rgba(0,0,0,0.5);
-    border-radius:30px;
+    border: 3px solid rgba(0, 0, 0, 0.5);
+    border-radius: 30px;
     padding: 50px;
-    margin-top:50px;
+    margin-top: 50px;
 }
