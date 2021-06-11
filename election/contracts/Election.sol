@@ -9,10 +9,13 @@ contract Election {
         uint voteCount;
         uint totalVote;
     }
+    struct SetCandidate {
+        address voter;
+        uint placeBlockNumber;
+    }
 
 // R/W Candidates
 mapping(uint => Candidate) public candidates;
-
 // key <-> value candidates array에 구조체의 값을 매핑.
 //Store accounts that have voted
 mapping(address => bool) public voters;
@@ -71,3 +74,5 @@ uint public candidatesCount;
 
 // Election.deployed().then(function(instance) { app = instance })
 // 인스턴스 조회용 함수
+
+

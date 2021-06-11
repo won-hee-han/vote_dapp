@@ -53,7 +53,7 @@
           var content = $("#content");
           // index.html의 loader와 content와 연결
 
-          
+          container.show();
           loader.show();
           content.hide();
           // rendering되기 전까지 loader화면은 보이고, content화면은 숨김
