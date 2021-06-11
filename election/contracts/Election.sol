@@ -54,7 +54,7 @@ uint public candidatesCount;
 
      //update candidate vote Count
      candidates[_candidateId].voteCount++;
-     candidates[2].totalVote++;
+     candidates[1].totalVote++;
      
      
 
