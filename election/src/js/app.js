@@ -34,23 +34,17 @@
 
               //    App.listenForEvents();
 
-              return App.startpage();
+              return App.render();
           });
       },
 
-      startpage: function() {
-          var vote__btn = $(".vote__btn");
-          var vote = $("#vote");
-          vote.show();
-
-          //      return App.render();
-      },
 
       render: function() {
           var electionInstance;
           var container = $(".container");
           var loader = $("#loader");
           var content = $("#content");
+ 
           // index.html의 loader와 content와 연결
 
           container.show();
@@ -62,7 +56,7 @@
           web3.eth.getCoinbase(function(err, account) {
               if (err === null) {
                   App.account = account;
-                  $("#accountAddress").html("Your Account : " + account);
+                  $("#accountAddress").html("현재 계정 : " + account);
                   // error가 없을 경우, html에 account주소를 표기
                   // 이더 계정을 연동
               }
@@ -82,18 +76,18 @@
               // candidatesResult를 index.html에 표시. 
               var candidatesSelect = $("#candidatesSelect");
               candidatesSelect.empty();
-
               for (var i = 1; i <= candidatesCount; i++) {
 
                   electionInstance.candidates(i).then(function(candidate) {
                       var id = candidate[0];
                       var name = candidate[1];
                       var voteCount = candidate[2];
-                      var totalVote = candidate[3];
-
+                      
+                      
+                      temp = voteCount;
                       // 후보자 수 만큼 electionInstance에 후보자 데이터를 저장
                       // Render candidate Result
-                      var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + "</td><td>" // + voteCount + "</td></tr>"
+                      var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + "</td><td>"  + voteCount + "</td></tr>"
                       candidatesResults.append(candidateTemplate);
                       // 후보자 템플릿에 id, name, votecount를 추가
 
@@ -102,9 +96,6 @@
                       candidatesSelect.append(candidateOption);
 
                       //Render candidate Result total
-                      var totalOption = totalVote;
-
-                      candidatesResults__total.append(totalOption);
                   });
               }
               return electionInstance.voters(App.account);
@@ -112,9 +103,10 @@
               //Do not allow a user to Vote
               if (hasVoted) {
                   $('form').hide();
-
+                  
                   // 투표를 한 경우 폼을 삭제합니다.
               }
+
               loader.hide();
               content.show();
           }).catch(function(error) {
@@ -122,7 +114,7 @@
           });
       },
 
-      /*
+      
             // Listen for events emitted from the contract
             listenForEvents: function() {
                 App.contracts.Election.deployed().then(function(instance) {
@@ -140,7 +132,7 @@
                 })
             },
 
-            */
+        
 
       castVote: function() {
           var candidateId = $('#candidatesSelect').val();
@@ -148,6 +140,7 @@
               return instance.vote(candidateId, { from: App.account });
           }).then(function(result) {
               // Wait for votes to update
+              alert("투표가 완료되었습니다");
               $("#content").hide();
               $("#loader").show();
 

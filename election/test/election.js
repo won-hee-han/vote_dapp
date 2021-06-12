@@ -67,7 +67,7 @@ contract("Election", function(accounts){
     });
 
     // 투표자가 중복 투표하는 것을 방지.
-    it("throws an exception for double voting", function() {
+ it("throws an exception for double voting", function() {
     return Election.deployed().then(function(instance) {
       electionInstance = instance;
       candidateId = 2;
@@ -79,7 +79,7 @@ contract("Election", function(accounts){
       // Try to vote again
       return electionInstance.vote(candidateId, { from: accounts[1] });
     }).then(assert.fail).catch(function(error) {
-      assert(error.message.indexOf('revert') >= 0, "error message must contain revert");
+      assert(error.message, "error message must contain revert");
       return electionInstance.candidates(1);
     }).then(function(candidate1) {
       var voteCount = candidate1[2];

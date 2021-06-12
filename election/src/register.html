@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Election DAPP</title>
+</head>
+
+<body id="vote">
+       <header class="screen__header">
+        <h1 class="screen__icon">
+            <a href="index.html"><img src="images/logo.png" class="screen__icon_i" /></a>
+        </h1>
+        <div class="contents">
+            <span class="contents__login">About us</span>
+            <span class="contents__login"><a href="login.html">Sign in</a></span>
+        </div>
+    </header>
+    <main>
+        <span id="accountAddress" class="contents__address"></span>
+        <div class="screen__description">투표 등록</div>
+
+        <div class="section section__register">
+          
+          <ul>
+             <li>
+               <span>투표 제목 : </span> <input name = "username" type = "text" placeholder="투표 제목" class="input__register"/>
+             </li>
+             <li>
+              <span> 투표 기간 : </span><input name = "date" type = "date" placeholder="date" class="input__register"/> ~
+                <input name = "date" type = "date" placeholder="date" class="input__register"/>
+             </li>
+             <li>
+                <span>1번 후보 : </span><input name = "candidatename" type = "text" placeholder="후보자 이름을 적어주세요" class="input__register">
+             </li>
+            <li>
+               <span>2번 후보 : </span><input name = "candidatename" type = "text" placeholder="후보자 이름을 적어주세요" class="input__register">
+            </li>
+             <li>
+              <button type="submit" class="btn-register">등록하기</button>
+             </li>
+         </ul>
+            
+        </div>
+
+         <div id="splash-screen">
+        <div class="loadingBox">
+        <div class="dim"></div>
+        <div class="circle"></div>
+        </div>
+        
+        
+
+    </main>
+</body>
+
+   <!-- jQuery (necessary for Bootstrap 's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+    <script src="https://kit.fontawesome.com/6478f529f2.js" crossorigin="anonymous">
+    </script>
+
+</html>

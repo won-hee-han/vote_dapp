@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Election DAPP</title>
+</head>
+
+<body id="vote">
+    <header class="screen__header">
+        <h1 class="screen__icon">
+            <a href="index.html"><img src="images/logo.png" class="screen__icon_i" /></a>
+        </h1>
+        <div class="contents">
+            <span class="contents__login">About us</span>
+            <span class="contents__login"><a href="login.html">Sign in</a></span>
+        </div>
+    </header>
+    <main>
+   <div class="container" style="display: none;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="screen__description">투표 하기</h1>
+                  
+                    <hr/>
+                    <br/>
+                    <div id="loader">
+                        <p class="text-center">투표 화면이 안보이시나요? 메타마스크 계정을 확인해주세요..</p>
+                    </div>
+                    <div id="content" style="display: none;">
+                        <h1 class="text-center">제21회 총학생회 선거</h1>
+                        <p class="text-right" style="margin-top:15px">일시 : 2021-06-12~</p>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <!--<th scope="col">Votes</th>-->
+                                </tr>
+                            </thead>
+                            </hr>
+
+                            <tbody id="candidatesResults">
+                            </tbody>
+                        </table>
+
+                        <form onSubmit="App.castVote(); return false;">
+                            <div class="form-group">
+                                <label for="candidatesSelect" style="margin-bottom:10px;">후보자를 선택해주세요.</label>
+                            <select class="form-control" id="candidatesSelect">
+                            </select>
+                            </div>
+                            <div style="display:flex; justify-content:flex-end;">
+                                <button type="submit" class="btn btn-primary">투표</button>
+                            </div>
+                            
+                        </form>
+                        <hr/>
+                        <div id="candidatesResults__total"> 총 투표수 : 
+                            </div>
+                        <p id="accountAddress" class="text-center"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </main>
+
+          <div id="splash-screen">
+        <div class="loadingBox">
+        <div class="dim"></div>
+        <div class="circle"></div>
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+    <script src="https://kit.fontawesome.com/6478f529f2.js" crossorigin="anonymous">
+    </script>
+    <script>
+        $(function() {
+      $(window).load(function() {
+          App.init();
+      });
+    });
+    </script>
+</body>
+
+</html>

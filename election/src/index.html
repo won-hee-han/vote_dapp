@@ -13,83 +13,52 @@
 <body id="vote">
     <header class="screen__header">
         <h1 class="screen__icon">
-            <a href="index.html"><img src="images/logo.png" class="screen__icon_i" /></a></h1>
+            <a href="index.html"><img src="images/logo.png" class="screen__icon_i" /></a>
+        </h1>
         <div class="contents">
-            <div class="contents__login">
-                <div class="c">About us</div>
-                <div class="contents__login"><a href="login.html">sign-in</a></div>
-            </div>
+            
+            <span class="contents__login">About us</span>
+            <span class="contents__login"><a href="login.html">Sign in</a></span>
         </div>
     </header>
     <main>
+        <span id="accountAddress" class="contents__address"></span>
         <div class="section">
-
             <img src="images/doge.jpg" class="screen__image">
             <div class="screen__description">당신의 소중한 표를 행사하세요</div>
 
         </div>
         <div class="section_one">
             <h4 class="introduction__header">블록체인 전자투표 시스템</h4>
-            <p class="introduction__paragraph">당신의 소중한 표를 행사하세요. 기존 전자투표 시스템은 위변조 가능성이 있고 변조의 가능성이 있어 안전하지 않습니다. 저희 시스템은 그 점을 개선하고자 착안하여, 블록체인에 데이터를 기록. 안전하게 보관합니다.
+            <p class="introduction__paragraph">당신의 소중한 표를 행사하세요. 기존 전자투표 시스템은 위변조 가능성이 있고 변조의 가능성이 있어 안전하지 않습니다.
             </p>
+            <p class="introduction__paragraph">
+                저희 시스템은 그 점을 개선하고자 착안하여, 블록체인에 데이터를 기록. 안전하게 보관합니다.</p>
             <div class="introduction__warning">
                 <i class="fas fa-exclamation-circle fa-2x"></i>
-                <span>투표를 행사하기 전에 메타마스크 지갑이 필요합니다.</span>
+                <span>사이트를 이용하기 전에 메타마스크 지갑이 필요합니다.</span>
             </div>
         </div>
         <div class="section_two">
             <div class="vote__image">
-                <img src="images/doge.jpg" class="screen__image" />
-                <button class="vote__btn" onclick="App.render()">투표 하기</button>
+                <img src="images/voting.jpg" class="screen__image__vote" />
+                <button class="vote__btn" ><a href="election.html">투표 하기</a></button>
             </div>
             <div class="vote__image">
-                <img src="images/doge.jpg" class="screen__image" />
-                <button class="vote__btn"><a href="result.html">투표 등록</a></button>
+                <img src="images/register.jpg" class="screen__image__vote" />
+                <button class="vote__btn"><a href="register.html">투표 등록</a></button>
             </div>
         </div>
-
-        <div class="container" style="display: none;">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="text-center">Election Results</h1>
-                    <hr/>
-                    <br/>
-                    <div id="loader">
-                        <p class="text-center">Loading...</p>
-                    </div>
-                    <div id="content" style="display: none;">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Name</th>
-                                    <!--<th scope="col">Votes</th>-->
-                                </tr>
-                            </thead>
-                            </hr>
-            
-                            <tbody id="candidatesResults">
-                            </tbody>
-                        </table>
-
-                        <form onSubmit="App.castVote(); return false;">
-                            <div class="form-group">
-                                <label for="candidatesSelect">Select Candidate</label>
-                                <select class="form-control" id="candidatesSelect">
-                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Vote</button>
-                            <hr />
-                        </form>
-                        <hr/>
-                        <div id="candidatesResults__total">Max voted : </div>
-                        <p id="accountAddress" class="text-center"></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
     </main>
+
+    <div id="splash-screen">
+        <div class="loadingBox">
+        <div class="dim"></div>
+        <div class="circle"></div>
+    </div>
+      
 
     <!-- jQuery (necessary for Bootstrap 's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
