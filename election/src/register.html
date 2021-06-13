@@ -20,31 +20,44 @@
             <span class="contents__login"><a href="login.html">Sign in</a></span>
         </div>
     </header>
-    <main>
+    <main id="main">
         <span id="accountAddress" class="contents__address"></span>
         <div class="screen__description" >투표 등록</div>
 
-        <div class="section section__register">
+        <form class="section section__register" id="add-item-to-store">
+        
           
           <ul>
              <li>
-               <span>투표 제목 : </span> <input name = "username" type = "text" placeholder="투표 제목" class="input__register"/>
+               <label for="product-name">투표 제목 : </label> <input id="product-name" required = "required" name = "product-name" type = "text" placeholder="제목을 입력해주세요" class="input__register"></input>
              </li>
              <li>
-              <span> 투표 기간 : </span><input name = "date" type = "date" placeholder="date" class="input__register"/> ~
-                <input name = "date" type = "date" placeholder="date" class="input__register"/>
-             </li>
-             <li>
-                <span>1번 후보 : </span><input name = "candidatename" type = "text" placeholder="후보자 이름을 적어주세요" class="input__register">
+                <label for="product-candidateOne">1번 후보 : </label><input id="product-candidateOne" name = "product-candidateOne" required="required" type = "text" placeholder="후보자 이름을 적어주세요" class="input__register">
              </li>
             <li>
-               <span>2번 후보 : </span><input name = "candidatename" type = "text" placeholder="후보자 이름을 적어주세요" class="input__register">
+               <label for="product-candidateTwo"> 2번 후보 : </label><input id="product-candidateTwo" name = "product-candidateTwo" required="required" type = "text" placeholder="후보자 이름을 적어주세요" class="input__register">
             </li>
              <li>
-              <button type="submit" class="btn-register" onclick="alert('등록 되었습니다')">등록하기</button>
+              <label for="product-date"> 투표 기간 : </label>
+                 <input type="datetime-local" class="input__register" name="product-start-time" id="product-start-time" required="required"></input> ~
+                <input type="datetime-local" class="input__register" name="product-end-time" id="product-end-time" required="required"></input>
+             </li>
+            <li>
+              <label for="product-candidateTwo">옵션 : </label>
+            <select class="input__register" name="product-condition" id="product-condition">
+            <option value="0">New</option>
+            <option value="1">Used</option>
+            </select>
+        </li>
+             <li>
+              <button type="submit" class="btn-register">등록하기</button>
              </li>
          </ul>
             
+        </form>
+        <div class="section__one" style="margin-top: 30px;">
+         <h4 class="infoElection__header">현재 진행 중인 투표</h4>
+         <div class="databox"></div>
         </div>
 
          <div id="splash-screen">
@@ -64,7 +77,8 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/web3.min.js"></script>
     <script src="js/truffle-contract.js"></script>
-    <script src="js/app.js"></script>
+
+    <script src="js/load.js"></script>
     <script src="https://kit.fontawesome.com/6478f529f2.js" crossorigin="anonymous">
     </script>
 

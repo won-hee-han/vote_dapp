@@ -1,3 +1,4 @@
+
   App = {
 
       web3Provider: null,
@@ -33,7 +34,7 @@
               App.contracts.Election.setProvider(App.web3Provider);
 
               //    App.listenForEvents();
-
+            
               return App.render();
           });
       },
@@ -46,7 +47,7 @@
           var content = $("#content");
  
           // index.html의 loader와 content와 연결
-
+          
           container.show();
           loader.show();
           content.hide();
@@ -82,9 +83,8 @@
                       var id = candidate[0];
                       var name = candidate[1];
                       var voteCount = candidate[2];
+                     
                       
-                      
-                      temp = voteCount;
                       // 후보자 수 만큼 electionInstance에 후보자 데이터를 저장
                       // Render candidate Result
                       var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + "</td><td>"  + voteCount + "</td></tr>"
@@ -94,7 +94,7 @@
                       // Render Candidate ballot option
                       var candidateOption = "<option value='" + id + "' >" + name + "</option>"
                       candidatesSelect.append(candidateOption);
-
+                      
                       //Render candidate Result total
                   });
               }
@@ -115,6 +115,7 @@
       },
 
       
+      /*
             // Listen for events emitted from the contract
             listenForEvents: function() {
                 App.contracts.Election.deployed().then(function(instance) {
@@ -131,7 +132,7 @@
                     })
                 })
             },
-
+    */
         
 
       castVote: function() {
@@ -147,7 +148,32 @@
           }).catch(function(err) {
               console.error(err);
           });
-      }
+      },
+
+
+      renderStore : function() {
+          //Get the Product Count
+          // Loop through and fetch all products by Id
+           var instance;
+          return App.contracts.Election.deployed().then(function(instance){
+              return instance.productIndex.call();             
+          }).then(function(count) {
+             for(var i=1; i<=count; i++) {
+                  App.renderProduct(instance, i);
+              }
+          });
+        },
+
+        renderProduct : function(instance, index) {
+            App.contracts.Election.deployed().then(function(instance) {
+              return instance.getProduct.call(index);
+            }).then(function(f){
+              let node = $("#electionName");
+              node.append(f[1]);
+           
+          });
+          
+        }
 
 
 
@@ -156,5 +182,7 @@
   $(function() {
       $(window).load(function() {
           App.init();
+       
       });
   });
+

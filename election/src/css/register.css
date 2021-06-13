@@ -32,3 +32,41 @@ li:last-child{
 }
 
 
+.voteData {
+    font-size : 35px;
+    width : 500px;
+    height : 500px;
+    display: flex;
+    margin : 30px;
+    flex-direction : column;
+}
+
+.eletion__title {
+    margin : 5px; 0px;
+}
+
+.databox {
+    display : flex;
+    margin-top: 25px;
+}
+
+.voteData {
+    width : 500px;
+    height : 500px;
+    border : 3px solid var(--main-color);
+    border-radius : 10px;
+    padding : 15px;
+}
+
+.infoElection__title {
+    margin : 30px 0px;
+    font-size : 25px;
+    font-weight : 600;
+}
+
+
+.infoElection__header {
+    font-size : 40px;
+    font-weight : 700;
+    color : var(--main-color);
+}
