@@ -109,12 +109,23 @@
 
               loader.hide();
               content.show();
+              var day = new Date();
+              var hour = day.getHours();
+              var minute = day.getMinutes();
+              loader.hide();
+              content.show();
+              if(hour>20 && minute>36){
+                content.hide();
+              }
+              // 21시 36분 이후로 숨김 
           }).catch(function(error) {
               console.warn(error);
           });
       },
 
-      
+
+              }
+              // 21시 36분 이후로 숨김 
       /*
             // Listen for events emitted from the contract
             listenForEvents: function() {
